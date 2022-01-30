@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="pojo.Rezervare" table="rezervare"
+		catalog="lazaroiu" optimistic-lock="version">
+		<id name="idrezervare" type="java.lang.Long">
+			<column name="idrezervare" />
+			<generator class="identity" />
+		</id>
+		<many-to-one name="hoteluri" class="pojo.Hoteluri"
+			fetch="select">
+			<column name="idhoteluri" />
+		</many-to-one>
+		<many-to-one name="camere" class="pojo.Camere"
+			fetch="select">
+			<column name="idcamere" />
+		</many-to-one>
+		<property name="checkin" type="string">
+			<column name="checkin" length="45" />
+		</property>
+		<property name="checkout" type="string">
+			<column name="checkout" length="45" />
+		</property>
+	</class>
+</hibernate-mapping>

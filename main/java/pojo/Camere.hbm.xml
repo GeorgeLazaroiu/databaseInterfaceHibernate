@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="pojo.Camere" table="camere" catalog="lazaroiu"
+		optimistic-lock="version">
+		<id name="idcamere" type="java.lang.Long">
+			<column name="idcamere" />
+			<generator class="identity" />
+		</id>
+		<property name="Numar" type="java.lang.Integer">
+			<column name="numar"  />
+		</property>
+		<property name="Pret" type="java.lang.Float">
+			<column name="pret" />
+		</property>
+		<property name="NrPers" type="java.lang.Integer">
+			<column name="numar_persoane" />
+		</property>
+		<property name="Confort" type="java.lang.Integer">
+			<column name="confort" />
+		</property>
+		<set name="Rezervare" table="rezervare" inverse="true"
+			lazy="true" fetch="select">
+			<key>
+				<column name="idcamere" />
+			</key>
+			<one-to-many class="pojo.Rezervare" />
+		</set>
+	</class>
+</hibernate-mapping>
